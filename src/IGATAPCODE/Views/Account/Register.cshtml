@@ -6,21 +6,28 @@
 
 @model RegisterViewModel
 
-<h2>Register a new worker</h2>
+<h2>Register a new student / teacher</h2>
 <hr />
 
-<form asp-controller="Account" asp-action="Register" method="post">
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <input class="form-control" asp-for="Email" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Password"></label>
-        <input class="form-control" asp-for="Password" />
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword"></label>
-        <input class="form-control" asp-for="ConfirmPassword" />
-    </div>
-    <input type="submit" value="Register" class="btn btn-default" />
-</form>
+<div class="container">
+
+    <form asp-controller="Account" asp-action="Register" method="post">
+        <div class="form-group">
+            <label asp-for="Email">Email </label>
+            <input class="form-control" asp-for="Email" />
+        </div>
+        <div class="form-group">
+            <label asp-for="UserName">User Name</label>
+            <input class="form-control" asp-for="UserName" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input class="form-control" asp-for="Password" />
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword">Reenter Password</label>
+            <input hidden class="form-control" asp-for="ConfirmPassword" />
+        </div>
+        <input type="submit" value="Register" class="btn btn-primary" />
+    </form>
+</div>

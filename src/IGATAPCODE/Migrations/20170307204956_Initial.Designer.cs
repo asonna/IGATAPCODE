@@ -8,7 +8,7 @@ using IGATAPCODE.Models;
 namespace IGATAPCODE.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170307202437_Initial")]
+    [Migration("20170307204956_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

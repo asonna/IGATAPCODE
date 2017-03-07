@@ -1,12 +1,12 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Log In";
 }
 
-<div class="container">
-    @*<div class="jumbotron">*@
-    <h1>IGATAP CODE SCHOOL</h1><hr />
-    @*</div><hr />*@
+@using IGATAPCODE.ViewModels;
 
+@model LoginViewModel
+
+<div class="container">
     <div class="row">
         <h3>Welcome to the coding school of faith!!!</h3><br />
     </div>
@@ -16,13 +16,13 @@
 
     <form asp-controller="Account" asp-action="Login" method="post">
         <div class="form-group">
-            <label asp-for="Email">Email</label>
-            <input class="form-control" asp-for="Email" />
+            <label asp-for="UserName">User Name</label>
+            <input class="form-control" asp-for="UserName" />
         </div><br />
         <div class="form-group">
             <label asp-for="Password">Password</label>
             <input class="form-control" asp-for="Password" />
         </div><br />
-        <input type="submit" value="Log in" class="btn btn-default" />
+        <input type="submit" value="Log in" class="btn btn-primary" />
     </form>
 </div>

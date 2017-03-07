@@ -5,17 +5,20 @@
 @using System.Security.Claims
 <h2>Authentication with Identity</h2>
 <hr />
+
 @if (User.Identity.IsAuthenticated)
 {
     <p>Hello @User.Identity.Name!</p>
+
+    <PlaceHolder to list courses></PlaceHolder>
+
     @using (Html.BeginForm("Logout", "Account"))
     {
         <input type="submit" class="btn btn-default" value="Log out" />
         <hr />
     }
-    <button class="btn btn-default">@Html.ActionLink("Add your contact to receive newsletter", "Entry", "MemberList")</button><hr />
-
 }
+
 else
 {
     <p class="btn btn-default">@Html.ActionLink("Register", "Register")</p>
