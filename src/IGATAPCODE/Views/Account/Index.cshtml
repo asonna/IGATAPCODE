@@ -10,19 +10,19 @@
     <div class="row">
         <p>Welcome to the coding school of faith!!!</p><br />
     </div>
-    /><br />
+    <br />
     <h2>Log into your account</h2>
     <hr />
 
     <form asp-controller="Account" asp-action="Login" method="post">
         <div class="form-group">
-            <label asp-for="Email"></label>
+            <label asp-for="Email">Email</label>
             <input class="form-control" asp-for="Email" />
-        </div>
+        </div><br />
         <div class="form-group">
-            <label asp-for="Password"></label>
+            <label asp-for="Password">Password</label>
             <input class="form-control" asp-for="Password" />
-        </div>
+        </div><br />
         <input type="submit" value="Log in" class="btn btn-default" />
     </form>
 </div>
