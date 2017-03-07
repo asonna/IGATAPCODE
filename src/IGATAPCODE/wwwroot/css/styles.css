@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 70px;
-    /*color: darkgrey;*/
-    background-color: blanchedalmond;
+    color: maroon;
+    /*background-color: blanchedalmond;*/
 }
 
 p {
@@ -9,7 +9,7 @@ p {
 }
 
 h1 {
-    font-family: 'AR BERKLEY';
+    font-family: papyrus;
     color: maroon;
 }
 

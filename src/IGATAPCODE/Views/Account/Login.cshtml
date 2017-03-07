@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    @*<div class="jumbotron">*@
+    <h1>IGATAP CODE SCHOOL</h1><hr />
+    @*</div><hr />*@
+
+    <div class="row">
+        <h3>Welcome to the coding school of faith!!!</h3><br />
+    </div>
+    <br />
+    <h2>Log into your account</h2>
+    <hr />
+
+    <form asp-controller="Account" asp-action="Login" method="post">
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input class="form-control" asp-for="Email" />
+        </div><br />
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input class="form-control" asp-for="Password" />
+        </div><br />
+        <input type="submit" value="Log in" class="btn btn-default" />
+    </form>
+</div>

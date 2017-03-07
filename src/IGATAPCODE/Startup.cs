@@ -23,7 +23,7 @@ namespace IGATAPCODE
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json");
-            //Configuration = builder.Build();
+            Configuration = builder.Build();
         }
         public void ConfigureServices(IServiceCollection services)
         {
@@ -31,7 +31,7 @@ namespace IGATAPCODE
 
             services.AddEntityFramework()
                 .AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -39,8 +39,6 @@ namespace IGATAPCODE
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseStaticFiles();
-
             loggerFactory.AddConsole();
 
             if (env.IsDevelopment())
@@ -49,6 +47,9 @@ namespace IGATAPCODE
             }
 
             app.UseIdentity();
+
+            app.UseStaticFiles();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -8,5 +8,6 @@ namespace IGATAPCODE.Models
 {
     public class ApplicationUser : IdentityUser
     {
+
     }
 }
