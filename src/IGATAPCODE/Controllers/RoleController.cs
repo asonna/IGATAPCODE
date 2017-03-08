@@ -78,7 +78,8 @@ namespace IGATAPCODE.Controllers
             }
             else
             {
-                return RedirectToAction("Index");
+                return View();
+                //return RedirectToAction("Index");
             }
         }
 
