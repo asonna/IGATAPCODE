@@ -5,13 +5,12 @@
 @*@if (User.IsInRole("Admin"))
 {*@
     <h2>Manage User Roles</h2>
-    @Html.ActionLink("Create New Role", "Create") 
-    @Html.ActionLink("Manage User Role", "ManageUserRoles")
+    @Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
     <hr />
 
-    <h2>Role Add to User</h2>
+    <h3>Role Add to User</h3>
 
-    @using (Html.BeginForm("RoleAddToUser", "Roles"))
+    @using (Html.BeginForm("RoleAddToUser", "Role"))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
@@ -26,7 +25,7 @@
     }
     <hr />
     <h3>Get Roles for a User</h3>
-    @using (Html.BeginForm("GetRoles", "Roles"))
+    @using (Html.BeginForm("GetRoles", "Role"))
     {
         @Html.AntiForgeryToken()
         <p>
@@ -51,7 +50,7 @@
     <hr />
     <h3>Delete A User from a Role</h3>
 
-    @using (Html.BeginForm("DeleteRoleForUser", "Roles"))
+    @using (Html.BeginForm("DeleteRoleForUser", "Role"))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)

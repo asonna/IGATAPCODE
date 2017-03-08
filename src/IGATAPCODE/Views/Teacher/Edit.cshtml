@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+@model IGATAPCODE.Models.Teacher
+<h2>Edit profile information</h2>
+
+@using (Html.BeginForm("Edit", "IGATAPCODE", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    @Html.LabelFor(model => model.FirstName)
+    @Html.EditorFor(model => model.FirstName)
+    <br />
+    @Html.LabelFor(model => model.LastName)
+    @Html.EditorFor(model => model.LastName)
+    <br />
+    @Html.LabelFor(model => model.Bio)
+    @Html.EditorFor(model => model.Bio)
+    <br />
+    @Html.LabelFor(model => model.Picture)
+    <input type="file" id="picture" name="picture" required />
+
+    <input type="submit" value="Update" />
+}

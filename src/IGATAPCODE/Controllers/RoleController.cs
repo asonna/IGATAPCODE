@@ -55,7 +55,8 @@ namespace IGATAPCODE.Controllers
             {
                 _db.Roles.Add(new Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole()
                 {
-                    Name = RoleName
+                    Name = RoleName,
+                    NormalizedName = RoleName.ToUpper()
                 });
                 _db.SaveChanges();
                 ViewBag.ResultMessage = "Role created successfully !";
@@ -109,6 +110,7 @@ namespace IGATAPCODE.Controllers
             {
                 var thisRole = _db.Roles.FirstOrDefault(r => r.Id == role.Id);
                 thisRole.Name = role.Name;
+                thisRole.NormalizedName = role.Name.ToUpper();
                 _db.Entry(thisRole).State = EntityState.Modified;
                 _db.SaveChanges();
 
@@ -126,7 +128,7 @@ namespace IGATAPCODE.Controllers
         {
             if (User.IsInRole("Admin"))
             {
-                var list = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Id.ToString(), Text = rr.Name }).ToList();
+                var list = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name, Text = rr.Name }).ToList();
                 ViewBag.Roles = list;
                 return View();
             }
@@ -138,12 +140,12 @@ namespace IGATAPCODE.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RoleAddToUser(string UserName, string RoleId)
+        public async Task<IActionResult> RoleAddToUser(string UserName, string RoleName)
         {
             try
             {
                 ApplicationUser user = _db.Users.FirstOrDefault(u => u.UserName == UserName);
-                var task = await _userManager.AddToRoleAsync(user, RoleId);
+                var task = await _userManager.AddToRoleAsync(user, RoleName);
 
             }
             catch (Exception)

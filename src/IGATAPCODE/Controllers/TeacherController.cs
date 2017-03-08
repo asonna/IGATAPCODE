@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 using IGATAPCODE.Models;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using System.IO;
-using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace IGATAPCODE.Controllers
 {
     [Authorize]
-    public class StudentController : Controller
+    public class TeacherController : Controller
     {
         private readonly ApplicationDbContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public StudentController(UserManager<ApplicationUser> userManager, ApplicationDbContext db)
+        public TeacherController(UserManager<ApplicationUser> userManager, ApplicationDbContext db)
         {
             _userManager = userManager;
             _db = db;
@@ -29,8 +28,8 @@ namespace IGATAPCODE.Controllers
         public IActionResult Index()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return View(_db.Students
-                .Where(student => student.User.Id == userId)
+            return View(_db.Teachers
+                .Where(teacher => teacher.User.Id == userId)
                 .ToList());
         }
 
@@ -42,7 +41,7 @@ namespace IGATAPCODE.Controllers
 
         // POST: /IGATAPCODE/Create
         [HttpPost]
-        public async Task<IActionResult> Create(string FirstName, string LastName, IFormFile picture)
+        public async Task<IActionResult> Create(string FirstName, string LastName, string Bio, IFormFile picture)
         {
             byte[] photoArray = new byte[0];
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -57,8 +56,8 @@ namespace IGATAPCODE.Controllers
                     photoArray = ms.ToArray();
                 }
             }
-            Student newStudent = new Student(FirstName, LastName, photoArray, currentUser);
-            _db.Students.Add(newStudent);
+            Teacher newTeacher = new Teacher(FirstName, LastName, Bio, photoArray, currentUser);
+            _db.Teachers.Add(newTeacher);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -66,13 +65,13 @@ namespace IGATAPCODE.Controllers
         // GET: /IGATAPCODE/Edit
         public IActionResult Edit(int id)
         {
-            Student thisStudent = _db.Students.FirstOrDefault(im => im.Id == id);
-            return View(thisStudent);
+            Teacher thisTeacher = _db.Teachers.FirstOrDefault(im => im.Id == id);
+            return View(thisTeacher);
         }
 
         // POST: /IGATAPCODE/Edit
         [HttpPost]
-        public IActionResult Edit(Student student, IFormFile picture)
+        public IActionResult Edit(Teacher teacher, IFormFile picture)
         {
             byte[] photoArray = new byte[0];
 
@@ -85,11 +84,10 @@ namespace IGATAPCODE.Controllers
                     photoArray = ms.ToArray();
                 }
             }
-            student.Picture = photoArray;
-            _db.Entry(student).State = EntityState.Modified;
+            teacher.Picture = photoArray;
+            _db.Entry(teacher).State = EntityState.Modified;
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-
     }
 }

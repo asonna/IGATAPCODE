@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+}
+
+@model ICollection<IGATAPCODE.Models.Teacher>
+
+@using System.Security.Claims
+
+<h1>Your profile information, @User.Identity.Name</h1>
+<div class="pull-right">
+    @using (Html.BeginForm("Logout", "Account"))
+    {
+        <input type="submit" class="btn btn-info" value="Log out" />
+    }
+</div>
+<hr />
+@Html.ActionLink("Add profile info", "Create")
+<hr />
+
+@foreach (var teacher in Model)
+{
+
+    string Teacher = "";
+    if (teacher.Picture != null)
+    {
+        var base64 = Convert.ToBase64String(teacher.Picture);
+        Teacher = String.Format("data:image/jpg;base64, " + base64);
+    }
+
+    <img src="@Teacher" />
+    <p>@teacher.FirstName @teacher.LastName</p>
+    <textarea>@teacher.Bio</textarea>
+    @Html.ActionLink("Edit this Profile", "Edit", new { id = teacher.Id })
+    <hr />
+}
+

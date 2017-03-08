@@ -7,8 +7,7 @@
 
 @*@if (User.IsInRole("Admin"))
 {*@
-    @Html.ActionLink("Create New Role", "Create") 
-    @Html.ActionLink("Manage User Role", "ManageUserRoles")
+    @Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
    <hr />
     <div>
         @foreach (var role in Model)
