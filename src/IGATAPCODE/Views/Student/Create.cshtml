@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Post New Photo";
+}
+
+@model IGATAPCODE.Models.Student
+<h2>Add profile information with picture</h2>
+
+@using (Html.BeginForm("Create", "IGATAPCODE", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.LabelFor(model => model.FirstName)
+    @Html.TextBoxFor(model => model.FirstName)
+    <br />
+    @Html.LabelFor(model => model.LastName)
+    @Html.TextBoxFor(model => model.LastName)
+    <br />
+    @Html.LabelFor(model => model.Picture)
+    <input type="file" id="picture" name="picture" required />
+
+    <input type="submit" value="Create" />
+}
