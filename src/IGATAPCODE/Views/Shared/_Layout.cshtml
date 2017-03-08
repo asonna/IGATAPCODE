@@ -28,6 +28,22 @@
                         <li>
                             @Html.ActionLink("Curriculum", "Resume", "Curriculum")
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li>
+                                    @Html.ActionLink("Admin", "Index", "Role")
+                                </li>
+                            }
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                @Html.ActionLink("Log out", "Logout", "Account")
+                            </li>
+}
+
                     </ul>
                 </div>
             </nav>

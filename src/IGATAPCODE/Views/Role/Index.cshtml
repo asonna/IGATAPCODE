@@ -3,17 +3,26 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Roles Listing </h2>
+    <h2>Roles Listing </h2>
 
-@Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
-<hr />
-<div>
-    @foreach (var role in Model)
-    {
-        <p>
-            <strong>@role.Name | </strong>
-            <span onclick="return confirm('Are you sure to delete?')"><a href="/Roles/Delete?RoleName=@role.Name" class="delLink" style="color:red;">Delete</a></span> |
-            @Html.ActionLink("Edit", "Edit", new { roleId = @role.Id })
-        </p>
-    }
-</div>
+@*@if (User.IsInRole("Admin"))
+{*@
+    @Html.ActionLink("Create New Role", "Create") 
+    @Html.ActionLink("Manage User Role", "ManageUserRoles")
+   <hr />
+    <div>
+        @foreach (var role in Model)
+        {
+            <p>
+                <strong>@role.Name | </strong>
+                <span onclick="return confirm('Are you sure to delete?')"><a href="/Roles/Delete?RoleName=@role.Name" class="delLink" style="color:red;">Delete</a></span> |
+                @Html.ActionLink("Edit", "Edit", new { roleId = @role.Id })
+            </p>
+        }
+    </div>
+@*}
+
+else
+{
+    <h2>You do not have the right access to view this page</h2>
+}*@

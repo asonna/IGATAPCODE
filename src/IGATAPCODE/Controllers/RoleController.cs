@@ -35,7 +35,15 @@ namespace IGATAPCODE.Controllers
         // GET: /Roles/Create
         public IActionResult Create()
         {
-            return View();
+            if (User.IsInRole("Admin"))
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+            
         }
 
         //
@@ -61,19 +69,33 @@ namespace IGATAPCODE.Controllers
 
         public IActionResult Delete(string RoleName)
         {
-            var thisRole = _db.Roles.FirstOrDefault(r => r.Name == RoleName);
-            _db.Roles.Remove(thisRole);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (User.IsInRole("Admin"))
+            {
+                var thisRole = _db.Roles.FirstOrDefault(r => r.Name == RoleName);
+                _db.Roles.Remove(thisRole);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         //
         // GET: /Roles/Edit/5
         public IActionResult Edit(string roleId)
         {
-            var thisRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
+            if (User.IsInRole("Admin"))
+            {
+                var thisRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
 
-            return View(thisRole);
+                return View(thisRole);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         //
@@ -101,10 +123,16 @@ namespace IGATAPCODE.Controllers
 
         public IActionResult ManageUserRoles()
         {
-            // prepopulat roles for the view dropdown
-            var list = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Id.ToString(), Text = rr.Name }).ToList();
-            ViewBag.Roles = list;
-            return View();
+            if (User.IsInRole("Admin"))
+            {
+                var list = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Id.ToString(), Text = rr.Name }).ToList();
+                ViewBag.Roles = list;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
