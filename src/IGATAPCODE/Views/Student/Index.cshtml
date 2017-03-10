@@ -7,12 +7,12 @@
 @using System.Security.Claims
 
 <h2>Your profile information, Student @User.Identity.Name</h2>
-<div class="pull-right">
+@*<div class="pull-right">
     @using (Html.BeginForm("Logout", "Account"))
     {
         <input type="submit" class="btn btn-info" value="Log out" />
     }
-</div>
+</div>*@
 <hr />
 @Html.ActionLink("Add profile info", "Create")
 <hr />
@@ -27,8 +27,18 @@
         Student = String.Format("data:image/jpg;base64, " + base64);
     }
 
-    <img src="@Student" />
-    <p>@student.FirstName @student.LastName</p>
+    <p>
+        <strong>Firstname:</strong> 
+        @student.FirstName
+        <br /> <br />
+        <strong>LastName:</strong>
+        @student.LastName
+        <br /><br />
+        <strong>My picture:</strong><br />
+        <img src="@Student" />
+        <hr />
+       </p>
+    
     @Html.ActionLink("Edit this Profile", "Edit", new { id = student.Id })
-    <hr />
+
 }

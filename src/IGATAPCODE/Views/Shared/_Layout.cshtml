@@ -20,13 +20,13 @@
                             @Html.ActionLink("Home", "Index", "Account")
                         </li>
                         <li>
-                            @Html.ActionLink("About Us", "About", "Home")
+                            @Html.ActionLink("About Us", "About", "Account")
                         </li>
                         <li>
                             @Html.ActionLink("Your profile", "Index", "Student")
                         </li>
                         <li>
-                            @Html.ActionLink("Curriculum", "Resume", "Curriculum")
+                            @Html.ActionLink("Curriculum", "Curriculum", "Account")
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -40,7 +40,12 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li>
-                                @Html.ActionLink("Log out", "Logout", "Account")
+                                <div class="pull-right">
+                                    @using (Html.BeginForm("Logout", "Account"))
+                                    {
+                                        <input type="submit" class="btn btn-info" value="Log out" />
+                                    }
+                                </div>
                             </li>
 }
 
@@ -55,11 +60,13 @@
             </div>
         </div><hr />
         <div id="footer">
-            <footer>
-                <br />
-                <strong text-align: center><em>2017 *Copyright* Annie Sonna</em></strong>
-                <br /><br /><br />
-            </footer>
+            <div class="container">
+                <footer>
+                    <br />
+                    <strong text-align: center><em>© 2017 Copyright - Annie Sonna</em></strong>
+                    <br /><br /><br />
+                </footer>
+            </div>
         </div>
         <div style="clear:both"></div>
     </div>

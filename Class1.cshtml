@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name = "viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @* Materialize/CSS*@
+    <link href = "https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href = "~/css/materialize.css" rel="stylesheet" type="text/css" />
+    <link href = "~/css/styles.css" rel="stylesheet" type="text/css" />
+    @* jQuery *@
+    <script src = "https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    @* Materialize JS*@
+    <script src = "~/js/materialize.js" ></ script >
+    < script src="~/js/materialize-jquery.js"></script>
+</head>
+<body>
+    @* Side nav for hamburger*@
+    <ul class="side-nav" id="hamburger">
+        <li><a asp-controller="Home" asp-action="About">About</a></li>
+        <li><a asp-controller="Home" asp-action="Projects">Projects</a></li>
+    </ul>
+    <header>
+        <div class="navbar-fixed">
+            <nav class="blue-grey lighten-2">
+                <div class="nav-wrapper">
+                    <a asp-controller="Home" asp-action="Index" class="brand-logo">Erik Killops</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a asp-controller="Home" asp-action="About">About</a></li>
+                        <li><a asp-controller="Home" asp-action="Projects">Projects</a></li>
+                    </ul>
+                    <a href = "#" data-activates="hamburger" class="button-collapse right"><i class="material-icons">menu</i></a>
+                </div>
+            </nav>
+        </div>
+        <div class="parallax-container">
+            <div class="parallax"><img src = "~/img/coffee-wide.jpg" ></ div >
+        </ div >
+    </ header >
+    < main >
+        < div class="container">
+            @RenderBody()
+        </div>
+        <br />
+    </main>
+    <footer class="page-footer orange accent-2">
+        <div class="container">
+            <div class="row">
+                <div class="col m6 s12">
+                    <h5 class="white-text">About the site</h5>
+                    <p class="white-text">Created using ASP.NET Core and Materialize CSS</p>
+                </div>
+                <div class="col m3 offset-m3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li><a class="white-text" href="https://github.com/ekillops">Github</a></li>
+                        <li><a class="white-text" href="www.linkedin.com/in/ekillops">LinkedIn</a></li>
+                        <li><a class="white-text" href="mailto:erik.killops@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <span class="">© 2017 Erik Killops</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

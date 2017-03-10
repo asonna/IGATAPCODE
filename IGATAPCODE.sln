@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5B682CAC-34D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38E87FB4-5E57-4C1F-B3FB-609D4D1697C2}"
 	ProjectSection(SolutionItems) = preProject
+		Class1.cshtml = Class1.cshtml
 		global.json = global.json
 	EndProjectSection
 EndProject

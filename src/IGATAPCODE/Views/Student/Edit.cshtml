@@ -5,7 +5,7 @@
 @model IGATAPCODE.Models.Student
 <h2>Edit profile information</h2>
 
-@using (Html.BeginForm("Edit", "IGATAPCODE", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(model => model.Id)
 

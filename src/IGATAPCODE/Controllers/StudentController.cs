@@ -25,7 +25,7 @@ namespace IGATAPCODE.Controllers
             _userManager = userManager;
             _db = db;
         }
-        // GET: /IGATAPCODE/Index
+        // GET: /Student/Index
         public IActionResult Index()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -34,13 +34,13 @@ namespace IGATAPCODE.Controllers
                 .ToList());
         }
 
-        // GET: /IGATAPCODE/Create
+        // GET: /Student/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: /IGATAPCODE/Create
+        // POST: /Student/Create
         [HttpPost]
         public async Task<IActionResult> Create(string FirstName, string LastName, IFormFile picture)
         {
@@ -63,14 +63,14 @@ namespace IGATAPCODE.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: /IGATAPCODE/Edit
+        // GET: /Student/Edit
         public IActionResult Edit(int id)
         {
             Student thisStudent = _db.Students.FirstOrDefault(im => im.Id == id);
             return View(thisStudent);
         }
 
-        // POST: /IGATAPCODE/Edit
+        // POST: /Student/Edit
         [HttpPost]
         public IActionResult Edit(Student student, IFormFile picture)
         {

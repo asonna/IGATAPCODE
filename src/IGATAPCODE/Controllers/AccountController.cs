@@ -74,5 +74,16 @@ namespace IGATAPCODE.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index");
         }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Curriculum()
+        {
+            return View();
+        }
+
     }
 }

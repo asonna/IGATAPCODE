@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 70px;
-    color: maroon;
-    background-color: antiquewhite;
+    color: #003399;
+    background-color: aliceblue;
 }
 
 p {
@@ -23,7 +23,6 @@ h2 {
 
 h3 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: maroon;
     font-weight: bold;
 }
 
@@ -32,27 +31,31 @@ img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    display: block;
+    margin: auto;
 }
 
 
 #footer {
-    background-color: darkgreen;
     color: white;
     position: fixed;
     bottom: 0.01px;
     width:100%;
 	height:50px; /* Height of the footer */
-	background:maroon;
+	background:#0047b3;
     content: footnote;
     }
 
 .navbar {
-    background-color: maroon;
+    background-color: #0047b3;
     color: white;
     font-size: x-large;
 }
 
-.navbar-nav {
+.navbar a{
     color: white;
-    font-size: x-large;
+}
+
+.navbar a:hover {
+    color: steelblue;
 }
